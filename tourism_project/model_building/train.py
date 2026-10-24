@@ -44,9 +44,18 @@ xgb_model = xgb.XGBClassifier(scale_pos_weight=class_weight, random_state=42)
 # Small grid so the pipeline runs fast on GitHub Actions.
 # Widen this if you want a more thorough hyperparameter search.
 param_grid = {
-    "xgbclassifier__n_estimators": [50, 100],
-    "xgbclassifier__max_depth": [2, 3],
-    "xgbclassifier__learning_rate": [0.05, 0.1],
+    #"xgbclassifier__n_estimators": [50, 75],
+    #"xgbclassifier__max_depth": [2, 3],
+    #"xgbclassifier__colsample_bytree": [0.4, 0.5],
+    #"xgbclassifier__colsample_bylevel": [0.4, 0.5],
+    #"xgbclassifier__learning_rate": [0.01, 0.05],
+    #"xgbclassifier__reg_lambda": [0.4, 0.5],
+    "xgbclassifier__n_estimators": [50, 75, 100],
+    "xgbclassifier__max_depth": [2, 3, 4],
+    "xgbclassifier__colsample_bytree": [0.4, 0.5, 0.6],
+    "xgbclassifier__colsample_bylevel": [0.4, 0.5, 0.6],
+    "xgbclassifier__learning_rate": [0.01, 0.05, 0.1],
+    "xgbclassifier__reg_lambda": [0.4, 0.5, 0.6]
 }
 
 # Model pipeline
@@ -55,7 +64,7 @@ model_pipeline = make_pipeline(preprocessor, xgb_model)
 # Start MLflow run
 with mlflow.start_run():
     # Hyperparameter tuning
-    grid_search = GridSearchCV(model_pipeline, param_grid, cv=5, scoring="recall", n_jobs=-1)
+    grid_search = GridSearchCV(model_pipeline, param_grid, cv=5, n_jobs=-1)
     grid_search.fit(Xtrain, ytrain)
 
     # Log all parameter combinations and their mean test scores
