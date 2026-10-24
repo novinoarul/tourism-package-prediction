@@ -34,23 +34,23 @@ monthly_income = st.number_input("Monthly Income", min_value=1000.0, max_value=1
 
 input_data = pd.DataFrame([{
     "Age": age,
-    "Type Of Contact": type_of_contact,
-    "City Tier": city_tier,
-    "Duration of Pitch": duration_of_pitch,
+    "TypeofContact": type_of_contact,
+    "CityTier": city_tier,
+    "DurationOfPitch": duration_of_pitch,
     "Occupation": occupation,
     "Gender": gender,
-    "Number of Person Visiting": number_of_person_visiting,
-    "Number of Followups": number_of_followups,
-    "Product Pitched": product_pitched,
-    "Preferred Property Rating": preferred_property_star,
-    "Marital Status": marital_status,
-    "Number of Trips": number_of_trips,
+    "NumberOfPersonVisiting": number_of_person_visiting,
+    "NumberOfFollowups": number_of_followups,
+    "ProductPitched": product_pitched,
+    "PreferredPropertyStar": preferred_property_star,
+    "MaritalStatus": marital_status,
+    "NumberOfTrips": number_of_trips,
     "Passport": passport,
-    "Pitch Satisfaction Score": pitch_satisfaction_score,
-    "Own Car": own_car,
-    "Number of Children Visiting": number_of_children_visiting,
+    "PitchSatisfactionScore": pitch_satisfaction_score,
+    "OwnCar": own_car,
+    "NumberOfChildrenVisiting": number_of_children_visiting,
     "Designation": designation,
-    "Monthly Income": monthly_income
+    "MonthlyIncome": monthly_income
 }])
 
 if st.button("Predict Failure"):
