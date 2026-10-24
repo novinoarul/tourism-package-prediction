@@ -53,8 +53,8 @@ input_data = pd.DataFrame([{
     "MonthlyIncome": monthly_income
 }])
 
-if st.button("Predict Failure"):
+if st.button("Predict Purchase"):
     prediction = model.predict(input_data)[0]
-    result = "Customer buys to wellness package" if prediction == 1 else "Customer does not buy the package"
+    result = "Customer buys the wellness package" if prediction == 1 else "Customer does not buy the package"
     st.subheader("Prediction Result:")
     st.success(f"The model predicts: **{result}**")
